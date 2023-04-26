@@ -1,2 +1,4 @@
 # stockgpt
-Freelance website for Brady Lochte
+Freelance stock information website for Brady Lochte, inspired by ChatGPT
+
+Built by Casey Pei & Ryan Kabir (2023)
