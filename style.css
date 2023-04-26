@@ -25,14 +25,14 @@ body {
 }
 
 .sidebar {
-    background-color: #292A2B;
+    background-color: var(--dark);
     height: 100vh;
     width: 200px;
     position: fixed;
     top: 0;
     left: 0;
     padding: 20px;
-    color: #949494;
+    color: var(--mid-dark);
     z-index: 1;
 }
 
@@ -42,7 +42,7 @@ body {
     padding-left: 30px;
     line-height: 24px;
     text-decoration: none;
-    color: #949494;
+    color: var(--mid-dark);
 }
 
 .main-content {
