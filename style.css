@@ -8,7 +8,7 @@
   
 :root {
     --primary: #5358fd;
-    --light: #cfecfd;
+    --light: #DDDDDD;
     --secondary: #2531ce;
     --mid-dark: #949494;
     --dark: #292A2B;
@@ -24,30 +24,92 @@ body {
     flex-wrap: wrap;
 }
 
+body {
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .sidebar {
-    background-color: var(--dark);
-    height: 100vh;
-    width: 200px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 20px;
-    color: var(--mid-dark);
-    z-index: 1;
+  background-color: var(--dark);
+  height: 100vh;
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  color: var(--mid-dark);
+  z-index: 1;
 }
 
 .sidebar a {
-    display: block;
-    margin-bottom: 10px;
-    padding-left: 30px;
-    line-height: 24px;
-    text-decoration: none;
-    color: var(--mid-dark);
+  display: block;
+  margin-bottom: 10px;
+  padding-left: 30px;
+  line-height: 24px;
+  text-decoration: none;
+  color: var(--mid-dark);
 }
 
 .main-content {
+  flex: 1;
+  padding: 20px;
+  z-index: 0;
+  margin-left: 250px;
+  overflow-y: auto; /* supposed to make it scrollable? */
+}
+
+/* search bar */
+
+.search-bar {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 40px;
+    background-color: #FFFFFF;
+    border: 1px solid var(--mid-dark);
+    border-radius: 10px; /* change border-radius to 10px; makes the squared edges */
+    padding: 5px 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    margin-left: 125px; /* centers the search box into the white portion*/
+  }
+  
+  .search-bar input[type="text"] {
     flex: 1;
-    padding: 20px;
-    z-index: 0;
-    margin-left: 250px; /* moves white panel so taskbar does not overlap */
+    border: none;
+    outline: none;
+    font-size: 16px;
+    margin-left: 10px;
+    border-radius: 10px; /* change border-radius to 10px; makes the squared edges */
+    padding: 8px 16px;
+  }
+  
+  .search-bar button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: var(--mid-dark);
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 16px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .search-bar button:hover {
+    color: #000000;
+    background-color: var(--light);
+  }
+
+  @media only screen and (max-width: 700px) {
+  .search-bar {
+    width: 400px;
+  }
 }
