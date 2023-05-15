@@ -20,24 +20,35 @@
     </head>
     <body>
         <div class="sidebar">
-            <a href="#">Clear Conversation</a>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
+            <a href="#">
+                <i class="fa-regular fa-trash-can"></i>
+                Clear Conversation
+            </a>
+            <a href="index.html">
+                <i class="fa-solid fa-house"></i>
+                Home
+            </a>
+            <a href="about.html">
+                <i class="fa-solid fa-circle-info"></i>
+                About
+            </a>
         </div>
 
-        <div class="main-content">
+        <div id="conversation" class="main-content">
             <h1>Testing Margins</h1>
             <p>Testing Margins.</p>
             
-            <i class="fa-regular fa-paper-plane"></i>
-            <i class="fa-regular fa-trash-can"></i>
-            <i class="fa-solid fa-house"></i>
-            <i class="fa-solid fa-circle-info"></i>
-
-            <div class="search-bar">
-                <input type="text" placeholder="Search...">
-                <button>Go</button>
+            
+            
+            <div class="search-bar-box">
+                <div class="search-bar">
+                    <input id="text-input" type="text" placeholder="Search...">
+                    <button onclick="return HandleInput()">
+                        <i class="fa-regular fa-paper-plane"></i>
+                    </button>
+                </div>
             </div>
+            
         </div>
     </body>
 </html>
