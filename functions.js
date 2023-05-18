@@ -118,10 +118,6 @@ function TypeResponse(i) {
   }
 };
 
-
-
-
-
 function HandleResponse() {
   // TODO: add response to conversation block
 };

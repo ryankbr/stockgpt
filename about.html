@@ -1,33 +1,52 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>StockGPT About</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- styling -->
-    <link rel="stylesheet" href="./style.css">
+      <title>StockGPT About</title>
+      <link rel="stylesheet" href="styles.css">
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <!-- styling -->
+      <link rel="stylesheet" href="./style.css">
 
-    <!-- icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"> 
- 
-    <!-- favicon -->
-    <link rel="apple-touch-icon" type="image/x-icon" href="./assets/logo.ico">
-    <link rel="icon" type="image/x-icon" href="./assets/logo192.png">
-    
-    <script src="./functions.js"></script>
-  </head>
+      <!-- icons -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"> 
+  
+      <!-- favicon -->
+      <link rel="apple-touch-icon" type="image/x-icon" href="./assets/logo.ico">
+      <link rel="icon" type="image/x-icon" href="./assets/logo192.png">
+      
+      <script src="./functions.js"></script>
+    </head>
 
-  <body>
-    <div class="sidebar">
-      <a href="#">Clear Conversation</a>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-    </div>
+    <body>
+        <div class="sidebar">
+            <a href="index.html">
+                <i class="fa-regular fa-trash-can"></i>
+                Clear Conversation
+            </a>
+            <a href="index.html">
+                <i class="fa-solid fa-house"></i>
+                Home
+            </a>
+            <a href="about.html">
+                <i class="fa-solid fa-circle-info"></i>
+                About
+            </a>
+        </div>
 
-    <div class="main-content">
-      <h1>About</h1>
-      <p> hi ryan :D</p>
-    </div>
+        <div class="main-content">
+          <div id="conversation">
+          </div>
+          
+          <div class="search-bar-box">
+              <div class="search-bar">
+                  <input id="text-input" type="text" placeholder="Search..." onkeypress="handleKeyPress(event)">
+                  <button onclick="return HandleInput()">
+                      <i class="fa-regular fa-paper-plane"></i>
+                  </button>
+              </div>
+          </div>
+      </div>
   </body>
 </html>
