@@ -28,6 +28,11 @@ const responseFormat = responseNum =>
     </p>
   </div>`
 
+function handleKeyPress(event) {
+  if (event.keyCode === 13) { // Enter key is pressed
+    HandleInput();
+  }
+}
 
 function HandleInput() {
   input = document.getElementById('text-input').value;
