@@ -134,48 +134,48 @@ body {
     box-sizing: border-box;
     display: flex;
     align-items: center;
-  }
+}
   
-  .search-bar input[type="text"] {
-    flex: 1;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    margin-left: 10px;
-    border-radius: 10px; /* change border-radius to 10px; makes the squared edges */
-    padding: 8px 16px;
-  }
-  
-  .search-bar button {
-    border: none;
-    outline: none;
-    background-color: transparent;
-    color: var(--mid-dark);
-    border-radius: 20px;
-    padding: 5px 15px;
-    font-size: 16px;
-    margin-left: 10px;
-    cursor: pointer;
-  }
+.search-bar input[type="text"] {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  margin-left: 10px;
+  border-radius: 10px; /* change border-radius to 10px; makes the squared edges */
+  padding: 8px 16px;
+}
 
-  .search-bar button:hover {
-    animation: searchButtonHover;
-    animation-fill-mode: forwards;
-    animation-duration: 0.5s;
-  }
-  
-  @keyframes searchButtonHover {
-    0%    {  
-            color: var(--mid-dark);
-            background-color: transparent;
-          }
-    100%  { 
-            color: black;
-            background-color: var(--light);
-          }
-  }
+.search-bar button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--mid-dark);
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;
+}
 
-  /* Main Logo */
+.search-bar button:hover {
+  animation: searchButtonHover;
+  animation-fill-mode: forwards;
+  animation-duration: 0.5s;
+}
+
+@keyframes searchButtonHover {
+  0%    {  
+          color: var(--mid-dark);
+          background-color: transparent;
+        }
+  100%  { 
+          color: black;
+          background-color: var(--light);
+        }
+}
+
+  /* main logo */
 
   .logo-container {
   position: fixed;
