@@ -4,11 +4,14 @@ var response =
 stock ticker yet! Please be patient as this is a work-in-progress application :)`;
 var conversationFormatted = "";
 
+var isTyping = false;
+var disableDelay = false;
+
 var ni = 0
 var nr = 0
 
-var speed = 50; /* The speed/duration of the effect in milliseconds */
-
+var SPEED = 50; /* The speed/duration of the effect in milliseconds */
+var speed = SPEED;
 
 const inputFormat = inputNum =>  
   `<div class="inputDisplay">
@@ -30,17 +33,34 @@ const responseFormat = responseNum =>
 
 function handleKeyPress(event) {
   if (event.keyCode === 13) { // Enter key is pressed
+    window.scrollTo(0,document.body.scrollHeight);
     HandleInput();
   }
 }
 
 function HandleInput() {
+  window.scrollTo(0,document.body.scrollHeight);
   input = document.getElementById('text-input').value;
 
+  if (input == "") {
+    return;
+  }
+  else if (isTyping == true) {
+    console.log("here");
+    speed = 0;
+    disableDelay = true;
+    return;
+  }
+  console.log("isTyping is " + isTyping);
   document.getElementById('text-input').value = "";
 
+  isTyping = true;
+  console.log("isTyping is " + isTyping);
+  speed = SPEED;
+  disableDelay = false;
   setTimeout(TypeInput, speed, 0);
   conversationFormatted = setTimeout(TypeResponse, (((speed) * input.length) + 500), 0);
+  
 
   // conversationFormatted += input + "<br><br>" + response + "<br><br>";
   console.log(input);
@@ -48,6 +68,7 @@ function HandleInput() {
 
 
 function TypeInput(i) {
+  window.scrollTo(0,document.body.scrollHeight);
   if (i == 0) {
     document.getElementById("conversation").innerHTML += inputFormat(ni);
   }
@@ -76,6 +97,10 @@ function TypeInput(i) {
 
 // biased to generally be quick
 function delayGenerator() {
+  if (disableDelay == true) {
+    return 0;
+  }
+
   let delay = (100 * Math.random())
 
   if (delay < 10) {
@@ -88,6 +113,7 @@ function delayGenerator() {
 }
 
 function TypeResponse(i) {
+  window.scrollTo(0,document.body.scrollHeight);
   if (i == 0) {
     document.getElementById("conversation").innerHTML += responseFormat(nr);
   }
@@ -114,10 +140,9 @@ function TypeResponse(i) {
 
     nr++;
 
+    isTyping = false;
+
     return(document.getElementById("conversation").innerHTML)
   }
 };
 
-function HandleResponse() {
-  // TODO: add response to conversation block
-};

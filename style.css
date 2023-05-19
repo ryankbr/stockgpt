@@ -43,7 +43,24 @@ body {
   color: var(--mid-dark);
 }
 
-.main-content {
+.sidebar a:hover{
+  animation: sideBarHover;
+  animation-fill-mode: forwards;
+  animation-duration: 0.5s;
+}
+
+@keyframes sideBarHover {
+  0%    { 
+          transform: translate(0px,  0px); 
+          color: var(--mid-dark);
+        }
+  100%  { 
+          transform: translate(5px,  0px); 
+          color: white;
+        }
+}
+
+#main-content {
   padding-right: 10%;
   z-index: 50;
   margin-left: 19%;
@@ -51,9 +68,10 @@ body {
   /* overflow-y: auto; supposed to make it scrollable? */ 
 }
 
-.main-content > div {
-  display: flex;
-  justify-content: center; /* align horizontal */
+/* CONVERSATION / TEXT BLOCK */
+
+#conversation-box {
+  overflow-anchor: none;
 }
 
 #conversation {
@@ -80,6 +98,10 @@ body {
   display: flex;
 }
 
+#spacer {
+  height: 200px;
+}
+
 /* search bar */
 
 .search-bar-box {
@@ -88,7 +110,18 @@ body {
   bottom: 5%;
   width: 70%;
   display: flex;
+  flex-direction: column;
+  align-items: center; /* align vertical */
   right: 5%;
+}
+
+.disclaimer {
+  color: gray;
+  font-size: small;
+}
+
+.underline {
+  text-decoration: underline;
 }
 
 .search-bar {
@@ -124,8 +157,20 @@ body {
     margin-left: 10px;
     cursor: pointer;
   }
-  
+
   .search-bar button:hover {
-    color: #000000;
-    background-color: var(--light);
+    animation: searchButtonHover;
+    animation-fill-mode: forwards;
+    animation-duration: 0.5s;
+  }
+  
+  @keyframes searchButtonHover {
+    0%    {  
+            color: var(--mid-dark);
+            background-color: transparent;
+          }
+    100%  { 
+            color: black;
+            background-color: var(--light);
+          }
   }
