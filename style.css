@@ -420,4 +420,32 @@ body {
     stroke-dashoffset: -68px;
   }
 
+  svg .top {
+    stroke: var(--more-dark);
+    transition: 0.5s;
+  }
+
+  svg:hover .top {
+    stroke: white;
+  }
+
+  svg .middle {
+    stroke: var(--more-dark);
+    transition: 0.5s;
+  }
+
+  svg:hover .middle {
+    stroke: white;
+  }
+  svg .bottom {
+    stroke: var(--more-dark);
+    transition: 0.5s;
+  }
+
+  svg:hover .bottom {
+    stroke: white;
+  }
+
+
+
 }
