@@ -42,12 +42,16 @@
 
         <div id="main-content">
             <div id="conversation-box">
+                <div class="logo-top">
+                    <img src="./assets/stockGPT_logoTextDev.png" height="50px" width="auto" alt="StockGPT logo" />
+                </div>
+                <div id="owo"></div>
                 <div id="conversation"></div>
                 <div id="spacer"></div>
             </div>
             <div class="search-bar-box">
                 <div class="search-bar">
-                    <input id="text-input" type="text" placeholder="Search..." onkeypress="handleKeyPress(event)">
+                    <input id="text-input" type="text" placeholder="Insert stock symbol here..." onkeypress="handleKeyPress(event)">
                     <button onclick="return HandleInput()">
                         <i class="fa-regular fa-paper-plane"></i>
                     </button>

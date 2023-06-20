@@ -1,7 +1,11 @@
+const fs = require('node:fs/promises');
+
+//////////////////////////////////////////////////////////////////////////
+                          // DISPLAY INPUT //
+//////////////////////////////////////////////////////////////////////////
+
 var input = "";
-var response = 
-`Hi! We have not received the data we need to give you information about that
-stock ticker yet! Please be patient as this is a work-in-progress application :)`;
+var response = `I'm sorry, I have not yet been trained on this stock and am unable to provide a response.`;
 var conversationFormatted = "";
 
 var isTyping = false;
@@ -146,3 +150,42 @@ function TypeResponse(i) {
   }
 };
 
+//////////////////////////////////////////////////////////////////////////
+                          // GET CSV //
+//////////////////////////////////////////////////////////////////////////
+
+
+// var reader = new XMLHttpRequest() || new ActiveXObject('MSXML2.XMLHTTP');
+
+function loadFile() {
+  
+  var output = fs.readFileSync('./data/StockGPT data 6-5-2023.csv')
+
+  console.log(output)  
+  // reader.open('get', './data/StockGPT data 6-5-2023.csv', true); 
+  // reader.onreadystatechange = displayContents;
+  // reader.send(null);
+  console.log("read")
+}
+
+function displayContents() {
+    if(reader.readyState==4) {
+        var el = document.getElementById('owo');
+        el.innerHTML = reader.responseText;
+    }
+}
+
+loadFile()
+displayContents()
+
+// var responseData = [];
+// var headers = arr[0].split(',');
+// for(var i = 1; i < arr.length; i++) {
+//   var data = arr[i].split(',');
+//   var obj = {};
+//   for(var j = 0; j < data.length; j++) {
+//      obj[headers[j].trim()] = data[j].trim();
+//   }
+//   responseData.push(obj);
+// }
+// JSON.stringify(responseData);
