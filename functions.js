@@ -150,6 +150,19 @@ function TypeResponse(i) {
   }
 };
 
+////////////////////////////////////////////////////////////
+// header stuff
+
+function toggleMobileMenu () {
+  mobile_menu_button = document.getElementById('mobileMenuButton');
+  mobile_menu = document.getElementById('sidebar');
+
+  mobile_menu_button.classList.toggle('active')
+  mobile_menu.classList.toggle('active')
+}
+
+
+
 //////////////////////////////////////////////////////////////////////////
                           // GET CSV //
 //////////////////////////////////////////////////////////////////////////
