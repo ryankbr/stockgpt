@@ -155,13 +155,11 @@ function TypeResponse(i) {
 
 function toggleMobileMenu () {
   mobile_menu_button = document.getElementById('mobileMenuButton');
-  mobile_menu = document.getElementById('sidebar');
+  mobile_menu = document.getElementById('mobile-menu');
 
   mobile_menu_button.classList.toggle('active')
   mobile_menu.classList.toggle('active')
 }
-
-
 
 //////////////////////////////////////////////////////////////////////////
                           // GET CSV //

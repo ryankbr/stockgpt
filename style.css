@@ -34,7 +34,7 @@ body {
   left: 0;
   padding-top: 2%;
   color: var(--mid-dark);
-  z-index: -10;
+  z-index: 10;
 }
 
 #sidebar div {
@@ -259,6 +259,10 @@ body {
   display: none;
 }
 
+#mobile-menu {
+  display: none;
+}
+
 /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */ 
 
 @media (max-width:600px)  { 
@@ -269,21 +273,48 @@ body {
   }
 
   #sidebar {
-    position: absolute;
+    display: none;
+  }
+
+  #mobile-menu {
+    display: block;
+    position: fixed;
     width: 100%;
     height: auto;
     z-index: 50;
     transform: translate(0, -500px);
-    /* animation: slide-in 0.5s forwards; */
     transition: 0.5s;
-  }
 
-  #sidebar div {
+    background-color: var(--dark);
+    top: 0;
+    left: 0;
+    padding-top: 2%;
+    color: var(--mid-dark);
+  }
+  
+  #mobile-menu div {
+    padding-left: 10%;
+    padding-right: 10%;
     padding-top: 2%;
     padding-bottom: 2%;
+  
+    display: flex;
+    align-items: center;
+  }
+  
+  #mobile-menu div a {
+    line-height: 24px;
+    text-decoration: none;
+    color: var(--mid-dark);
+    transition: 0.5s;
+  }
+  
+  #mobile-menu div:hover a {
+    color: white;
+    transform: translate(5px,  0px); 
   }
 
-  #sidebar.active {
+  #mobile-menu.active {
     /* animation: slide-out 0.5s forwards; */
     transform: translate(0, 30px);
     /* transition: transform 0.75s; */
