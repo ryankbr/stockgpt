@@ -128,7 +128,7 @@ body {
 
 .search-bar-box {
   position: fixed;
-  z-index: 5;
+  z-index: 999;
   bottom: 5%;
   width: 80%;
 
@@ -354,6 +354,7 @@ body {
   }
 
   .logo-top {
+    margin-top: 40px;
     z-index: -10;
   }
 
@@ -364,6 +365,10 @@ body {
   }
 
   header {
+    width: 100%;
+
+    top: 0; 
+    position: fixed;
     z-index: 100;
 
     background-color: var(--dark);
@@ -378,7 +383,6 @@ body {
   }
 
   .mobile {
-    position: sticky;
     z-index: 10000;
     display: flex;
   }
