@@ -76,9 +76,12 @@
                       d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
             </svg>
         </header>
-        
+
         <div id="main-content">
-            <div id="conversation-box">
+            <div id="logo-page" onclick="startPage()">
+                <img src="./assets/stockGPT_logoText.png" max-width="500px" min-width="100px" height="auto" alt="StockGPT logo" />
+            </div>
+            <div id="conversation-box" class="inactive">
                 <div class="logo-top">
                     <img src="./assets/stockGPT_logoTextDev.png" height="50px" width="auto" alt="StockGPT logo" />
                 </div>
@@ -86,7 +89,7 @@
                 <div id="conversation"></div>
                 <div id="spacer"></div>
             </div>
-            <div class="search-bar-box">
+            <div id="search-bar-box" class="inactive">
                 <div class="search-bar-box-inner">
                     <div class="search-bar">
                         <input id="text-input" type="text" placeholder="Insert stock symbol here..." onkeypress="handleKeyPress(event)">

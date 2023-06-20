@@ -153,13 +153,30 @@ function TypeResponse(i) {
 ////////////////////////////////////////////////////////////
 // header stuff
 
+
 function toggleMobileMenu () {
   mobile_menu_button = document.getElementById('mobileMenuButton');
   mobile_menu = document.getElementById('mobile-menu');
 
-  mobile_menu_button.classList.toggle('active')
-  mobile_menu.classList.toggle('active')
+  mobile_menu_button.classList.toggle('active');
+  mobile_menu.classList.toggle('active');
 }
+
+function startPage () {
+  logo_page = document.getElementById('logo-page');
+
+  logo_page.classList.toggle('inactive');
+  localStorage.setItem("seenIntro", true)
+}
+
+if (localStorage.getItem("seenIntro")) {
+  logo_page = document.getElementById('logo-page');
+
+  if (logo_page) {
+    logo_page.classList.add('inactive');
+  }
+}
+
 
 //////////////////////////////////////////////////////////////////////////
                           // GET CSV //
