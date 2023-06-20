@@ -51,16 +51,18 @@
                 <div id="spacer"></div>
             </div>
             <div class="search-bar-box">
-                <div class="search-bar">
-                    <input id="text-input" type="text" placeholder="Insert stock symbol here..." onkeypress="handleKeyPress(event)">
-                    <button onclick="return HandleInput()">
-                        <i class="fa-regular fa-paper-plane"></i>
-                    </button>
+                <div class="search-bar-box-inner">
+                    <div class="search-bar">
+                        <input id="text-input" type="text" placeholder="Insert stock symbol here..." onkeypress="handleKeyPress(event)">
+                        <button onclick="return HandleInput()">
+                            <i class="fa-regular fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <p class="disclaimer">
+                        <span class="underline">StockGPT version 1</span>.
+                        StockGPT may produce inaccurate information and should not be relied upon for financial advice.
+                    </p>
                 </div>
-                <p class="disclaimer">
-                    <span class="underline">StockGPT version 1</span>.
-                    StockGPT may produce inaccurate information and should not be relied upon for financial advice.
-                </p>
             </div>
         </div>
     </body>
