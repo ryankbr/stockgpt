@@ -1,4 +1,4 @@
-const fs = require('node:fs/promises');
+// const fs = require('node:fs/promises');
 
 //////////////////////////////////////////////////////////////////////////
                           // DISPLAY INPUT //
@@ -157,26 +157,26 @@ function TypeResponse(i) {
 
 // var reader = new XMLHttpRequest() || new ActiveXObject('MSXML2.XMLHTTP');
 
-function loadFile() {
+// function loadFile() {
   
-  var output = fs.readFileSync('./data/StockGPT data 6-5-2023.csv')
+//   var output = fs.readFileSync('./data/StockGPT data 6-5-2023.csv')
 
-  console.log(output)  
-  // reader.open('get', './data/StockGPT data 6-5-2023.csv', true); 
-  // reader.onreadystatechange = displayContents;
-  // reader.send(null);
-  console.log("read")
-}
+//   console.log(output)  
+//   // reader.open('get', './data/StockGPT data 6-5-2023.csv', true); 
+//   // reader.onreadystatechange = displayContents;
+//   // reader.send(null);
+//   console.log("read")
+// }
 
-function displayContents() {
-    if(reader.readyState==4) {
-        var el = document.getElementById('owo');
-        el.innerHTML = reader.responseText;
-    }
-}
+// function displayContents() {
+//     if(reader.readyState==4) {
+//         var el = document.getElementById('owo');
+//         el.innerHTML = reader.responseText;
+//     }
+// }
 
-loadFile()
-displayContents()
+// loadFile()
+// displayContents()
 
 // var responseData = [];
 // var headers = arr[0].split(',');
