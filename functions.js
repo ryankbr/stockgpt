@@ -56,7 +56,7 @@ var disableDelay = false;
 var ni = 0
 var nr = 0
 
-var SPEED = 50; /* The speed/duration of the effect in milliseconds */
+var SPEED = 25; /* The speed/duration of the effect in milliseconds */
 var speed = SPEED;
 
 const inputFormat = inputNum =>  
