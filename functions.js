@@ -147,6 +147,7 @@ function parseInputSetResponse(input) {
   for (let i = 0; i < input_tokens.length; ++i) {
     let input_token = input_tokens[i];
     input_token = input_token.toUpperCase();
+    input_token = input_token.replace(/[^0-9a-z]/gi, '');
     console.log(input_token)
   
     if (responseData.hasOwnProperty(input_token)) {
