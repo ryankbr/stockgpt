@@ -5,10 +5,8 @@
 var responseData = new Object();
 
 function reqListener() {
-  // console.log(this.responseText);
 
   const header = "Symbol,Response \n";
-  // var data = new Object();
   var data_csv = this.responseText;
 
   data_csv = data_csv.substring(header.length)
@@ -39,25 +37,8 @@ req.send();
 
 
 window.onload = function () {
-  if (document.getElementById("file-read")) {
-    console.log("bruh i am so sad")
-    // document.getElementById("file-read").innerHTML = responseData
-    
-    // setTimeout(doSomething, 3000);
-
-    // function doSomething() {
-    //   // do whatever you want here
-    //   for (var d_pair in responseData) {
-    //     console.log(d_pair)
-    //     console.log(responseData[d_pair])
-    //   }
-    // }
-    //   }
-    //   console.log(responseData["YOLO"])
-    //   document.getElementById("file-read").innerHTML = responseData
-    // }
-
-  }
+  checkSession();
+  
 };
 
 //////////////////////////////////////////////////////////////////////////
@@ -227,29 +208,53 @@ function TypeResponse(i) {
   }
 };
 
-////////////////////////////////////////////////////////////
-// header stuff
+//////////////////////////////////////////////////////////////////////////
+                          // INTRO ANIMATION //
+//////////////////////////////////////////////////////////////////////////
 
-// let hasSeenIntro = false;
 
-var isFirstVisit = localStorage.getItem('_firstVisit'); // get the key
-console.log(isFirstVisit)
+function setCookie(c_name,value,exdays){var exdate=new Date();exdate.setDate(exdate.getDate() + exdays);var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());document.cookie=c_name + "=" + c_value;}
 
-if (isFirstVisit) { // returning visitor 
+function getCookie(c_name){var c_value = document.cookie;var c_start = c_value.indexOf(" " + c_name + "=");if (c_start == -1){c_start = c_value.indexOf(c_name + "=");}if (c_start == -1){c_value = null;}else{c_start = c_value.indexOf("=", c_start) + 1;var c_end = c_value.indexOf(";", c_start);if (c_end == -1){c_end = c_value.length;}c_value = unescape(c_value.substring(c_start,c_end));}return c_value;}
 
-  localStorage.setItem('_firstVisit', false); // set key
 
-  logo_page = document.getElementById('logo-page');
-
-} 
-else { // first visit
-
-  logo_page = document.getElementById('logo-page');
-  if (logo_page) {
-    logo_page.setAttribute("style", "display: none;"); 
+function checkSession(){
+  
+  var c = getCookie("visited");
+  if (c === "yes") {
+    // recurring visitor
+    console.log("old visitor")
+    if (document.getElementById('logo-page')) {
+      logo_page = document.getElementById('logo-page');
+      // logo_page.setAttribute("style", "display: none;");
+      
+    } 
+  } else {
+    // new visitor -- logo animation
+    console.log("new visitor")
+    if (document.getElementById('logo-page')) {
+      logo_page = document.getElementById('logo-page')
+      logo_page.classList.remove('disabled')
+      startPage();
+      
+    } 
+    // startPage();
   }
 
+  setCookie("visited", "yes", 365); // expire in 1 year; or use null to never expire
+  
 }
+
+function startPage () {
+  if (document.getElementById('logo-page')) {
+    logo_page = document.getElementById('logo-page');
+    logo_page.classList.add('inactive');
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////
+                          // MOBILE MENU //
+//////////////////////////////////////////////////////////////////////////
 
 function toggleMobileMenu () {
   if (document.getElementById('mobileMenuButton') && document.getElementById('mobile-menu')) {
@@ -261,12 +266,5 @@ function toggleMobileMenu () {
   }
 }
 
-function startPage () {
-  if (document.getElementById('logo-page')) {
-    logo_page = document.getElementById('logo-page');
-    logo_page.classList.add('inactive');
-    localStorage.setItem('_firstVisit', false); // set key
-  }
-}
 
 

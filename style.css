@@ -96,9 +96,15 @@ body {
 
 }
 
-#logo-page.inactive {
+#logo-page.slideOut {
   opacity: 0;
   animation: 1s logoDisappear ease-in-out;
+  transform: translate(0vw, -500px);
+}
+
+#logo-page.disabled {
+  opacity: 0;
+  display: none;
   transform: translate(0vw, -500px);
 }
 
