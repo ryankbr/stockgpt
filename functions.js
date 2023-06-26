@@ -1,4 +1,64 @@
-// const fs = require('node:fs/promises');
+//////////////////////////////////////////////////////////////////////////
+                          // GET CSV //
+//////////////////////////////////////////////////////////////////////////
+
+var responseData = new Object();
+
+function reqListener() {
+  // console.log(this.responseText);
+
+  const header = "Symbol,Response \n";
+  // var data = new Object();
+  var data_csv = this.responseText;
+
+  data_csv = data_csv.substring(header.length)
+  var lines = data_csv.split(`\r\n`);
+  var stock = "";
+  var stock_response = "";
+
+  for (let i = 0; i < lines.length - 1; i++) {
+
+    stock_pair_raw = lines[i].replace(/"/g, "");
+
+    stock = stock_pair_raw.substring(0, stock_pair_raw.search(","))
+    
+    stock_response = stock_pair_raw.substring(stock_pair_raw.search(",") + 1)
+
+    responseData[stock] = stock_response
+
+    console.log(stock_response)
+
+  }
+}
+
+
+const req = new XMLHttpRequest();
+req.addEventListener("load", reqListener);
+req.open("GET", "https://ryankbr.github.io/stockgpt/data/response6-5-2023.csv");
+req.send();
+
+
+window.onload = function () {
+  if (document.getElementById("file-read")) {
+    console.log("bruh i am so sad")
+    // document.getElementById("file-read").innerHTML = responseData
+    
+    // setTimeout(doSomething, 3000);
+
+    // function doSomething() {
+    //   // do whatever you want here
+    //   for (var d_pair in responseData) {
+    //     console.log(d_pair)
+    //     console.log(responseData[d_pair])
+    //   }
+    // }
+    //   }
+    //   console.log(responseData["YOLO"])
+    //   document.getElementById("file-read").innerHTML = responseData
+    // }
+
+  }
+};
 
 //////////////////////////////////////////////////////////////////////////
                           // DISPLAY INPUT //
@@ -6,6 +66,7 @@
 
 var input = "";
 var response = `I'm sorry, I have not yet been trained on this stock and am unable to provide a response.`;
+const DEFAULT_RESPONSE = `I'm sorry, I have not yet been trained on this stock and am unable to provide a response.`;
 var conversationFormatted = "";
 
 var isTyping = false;
@@ -56,6 +117,7 @@ function HandleInput() {
     return;
   }
   console.log("isTyping is " + isTyping);
+  response = parseInputSetResponse(input);
   document.getElementById('text-input').value = "";
 
   isTyping = true;
@@ -66,7 +128,6 @@ function HandleInput() {
   conversationFormatted = setTimeout(TypeResponse, (((speed) * input.length) + 500), 0);
   
 
-  // conversationFormatted += input + "<br><br>" + response + "<br><br>";
   console.log(input);
 };
 
@@ -99,6 +160,21 @@ function TypeInput(i) {
   }
 };
 
+function parseInputSetResponse(input) {
+  var input_tokens = input.split(' ');
+  
+  for (let i = 0; i < input_tokens.length; ++i) {
+    let input_token = input_tokens[i];
+    input_token = input_token.toUpperCase();
+    console.log(input_token)
+  
+    if (responseData.hasOwnProperty(input_token)) {
+      return responseData[input_token];
+    }
+  }
+  return DEFAULT_RESPONSE;
+}
+
 // biased to generally be quick
 function delayGenerator() {
   if (disableDelay == true) {
@@ -128,7 +204,8 @@ function TypeResponse(i) {
     alreadyWritten = alreadyWritten.replace('▒', '');
     document.getElementById("nr" + nr).innerHTML = alreadyWritten;
     
-    document.getElementById("nr" + nr).innerHTML += response.charAt(i);
+    var charToPlace = (response.charAt(i) == "\r") ? "<br>" : response.charAt(i);
+    document.getElementById("nr" + nr).innerHTML += charToPlace;
 
     if (delay < 1) {
       document.getElementById("nr" + nr).innerHTML += '▒';
@@ -153,67 +230,43 @@ function TypeResponse(i) {
 ////////////////////////////////////////////////////////////
 // header stuff
 
+// let hasSeenIntro = false;
+
+var isFirstVisit = localStorage.getItem('_firstVisit'); // get the key
+console.log(isFirstVisit)
+
+if (isFirstVisit) { // returning visitor 
+
+  localStorage.setItem('_firstVisit', false); // set key
+
+  logo_page = document.getElementById('logo-page');
+
+} 
+else { // first visit
+
+  logo_page = document.getElementById('logo-page');
+  if (logo_page) {
+    logo_page.setAttribute("style", "display: none;"); 
+  }
+
+}
 
 function toggleMobileMenu () {
-  mobile_menu_button = document.getElementById('mobileMenuButton');
-  mobile_menu = document.getElementById('mobile-menu');
+  if (document.getElementById('mobileMenuButton') && document.getElementById('mobile-menu')) {
+    mobile_menu_button = document.getElementById('mobileMenuButton');
+    mobile_menu = document.getElementById('mobile-menu');
 
-  mobile_menu_button.classList.toggle('active');
-  mobile_menu.classList.toggle('active');
+    mobile_menu_button.classList.toggle('active');
+    mobile_menu.classList.toggle('active');
+  }
 }
 
 function startPage () {
-  logo_page = document.getElementById('logo-page');
-
-  logo_page.classList.toggle('inactive');
-  localStorage.setItem("seenIntro", true)
-}
-
-if (localStorage.getItem("seenIntro")) {
-  logo_page = document.getElementById('logo-page');
-
-  if (logo_page) {
+  if (document.getElementById('logo-page')) {
+    logo_page = document.getElementById('logo-page');
     logo_page.classList.add('inactive');
+    localStorage.setItem('_firstVisit', false); // set key
   }
 }
 
 
-//////////////////////////////////////////////////////////////////////////
-                          // GET CSV //
-//////////////////////////////////////////////////////////////////////////
-
-
-// var reader = new XMLHttpRequest() || new ActiveXObject('MSXML2.XMLHTTP');
-
-// function loadFile() {
-  
-//   var output = fs.readFileSync('./data/StockGPT data 6-5-2023.csv')
-
-//   console.log(output)  
-//   // reader.open('get', './data/StockGPT data 6-5-2023.csv', true); 
-//   // reader.onreadystatechange = displayContents;
-//   // reader.send(null);
-//   console.log("read")
-// }
-
-// function displayContents() {
-//     if(reader.readyState==4) {
-//         var el = document.getElementById('owo');
-//         el.innerHTML = reader.responseText;
-//     }
-// }
-
-// loadFile()
-// displayContents()
-
-// var responseData = [];
-// var headers = arr[0].split(',');
-// for(var i = 1; i < arr.length; i++) {
-//   var data = arr[i].split(',');
-//   var obj = {};
-//   for(var j = 0; j < data.length; j++) {
-//      obj[headers[j].trim()] = data[j].trim();
-//   }
-//   responseData.push(obj);
-// }
-// JSON.stringify(responseData);
