@@ -98,7 +98,7 @@ body {
 
 #logo-page.slideOut {
   opacity: 0;
-  animation: 1s logoDisappear ease-in-out;
+  animation: 1.5s logoDisappear ease-in-out;
   transform: translate(0vw, -500px);
 }
 

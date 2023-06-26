@@ -226,19 +226,17 @@ function checkSession(){
     console.log("old visitor")
     if (document.getElementById('logo-page')) {
       logo_page = document.getElementById('logo-page');
-      // logo_page.setAttribute("style", "display: none;");
       
     } 
   } else {
     // new visitor -- logo animation
     console.log("new visitor")
     if (document.getElementById('logo-page')) {
-      logo_page = document.getElementById('logo-page')
-      logo_page.classList.remove('disabled')
+      logo_page = document.getElementById('logo-page');
+      logo_page.classList.remove('disabled');
       startPage();
       
     } 
-    // startPage();
   }
 
   setCookie("visited", "yes", 365); // expire in 1 year; or use null to never expire
@@ -248,7 +246,7 @@ function checkSession(){
 function startPage () {
   if (document.getElementById('logo-page')) {
     logo_page = document.getElementById('logo-page');
-    logo_page.classList.add('inactive');
+    logo_page.classList.add('slideOut');
   }
 }
 
